@@ -35,7 +35,7 @@ jobs:
         uses: actions/configure-pages@v5
 
       # 3. Upload the static site folder
-      - name: Upload TUR_WEBAPP
+      - name: Upload Tur_Webapp
         uses: actions/upload-pages-artifact@v3
         with:
           # Only upload the TUR_WEBAPP folder, not the entire repo
