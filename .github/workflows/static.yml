@@ -1,5 +1,5 @@
 # Workflow: Deploy TUR_WEBAPP static site to GitHub Pages
-name: Deploy TUR_WEBAPP to GitHub Pages
+name: Deploy Tur_Webapp to GitHub Pages
 
 on:
   # Trigger deployment on push to main branch
@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Only upload the TUR_WEBAPP folder, not the entire repo
-          path: 'TUR_WEBAPP'
+          path: 'Tur_Webapp'
 
       # 4. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
