@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Village of Tur — Directory & Map</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>⚔️ The Village of Tur ⚔️</h1>
+    <nav>
+      <button onclick="showSection('npcSection')">NPC Directory</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="npcSection"></section>
+    <section id="mapSection" style="display:none"></section>
+  </main>
+
+  <!-- Load data first, then script -->
+  <script src="data/npcs.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
