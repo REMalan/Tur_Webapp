@@ -1,0 +1,47 @@
+# Workflow: Deploy TUR_WEBAPP static site to GitHub Pages
+name: Deploy TUR_WEBAPP to GitHub Pages
+
+on:
+  # Trigger deployment on push to main branch
+  push:
+    branches: ["main"]
+
+  # Optional: allows manual trigger in Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: read       # Required to read repo contents
+  pages: write         # Required to deploy to GitHub Pages
+  id-token: write      # Needed for authentication with GitHub
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false  # Allow current deployment to finish
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Configure GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # 3. Upload the static site folder
+      - name: Upload TUR_WEBAPP
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Only upload the TUR_WEBAPP folder, not the entire repo
+          path: 'TUR_WEBAPP'
+
+      # 4. Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
